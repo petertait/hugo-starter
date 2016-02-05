@@ -1,0 +1,20 @@
+{
+  "name": "petertait.com",
+  "description": "Personal website of designer Peter Tait.",
+  "main": "gulpfile.js",
+  "authors": [
+    "Peter Tait <contact@petertait.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/petertait/petertait.com",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/vendor/",
+    "test",
+    "tests"
+  ]
+}
