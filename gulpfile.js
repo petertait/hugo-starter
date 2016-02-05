@@ -31,20 +31,6 @@ var paths = {
 // Load the plugin into a variable
 var lazypipe = require('lazypipe');
 
-function addFileRevision( dest ) {
-  var sourceRoot = dest.indexOf('js')!==-1 ? '/scripts/' : '/source/';
-
-  return lazypipe()
-    .pipe(rev)
-    .pipe(sourcemaps.write, '../maps', { sourceRoot: sourceRoot })
-    .pipe(gulp.dest, dest)
-    .pipe(rev.manifest, 'source/rev-manifest.json', {
-      base: process.cwd()+'/static',
-      merge: true
-    })
-    .pipe(gulp.dest, 'static');
-}
-
 // Styles Build
 var processors = [
   require('postcss-import')({ glob: true }),
@@ -53,19 +39,17 @@ var processors = [
   }),
   require('postcss-nested'),
   require('postcss-simple-vars'),
+  require('precss')({})
 ];
 
 gulp.task('styles', ['clean:styles'], function(  ) {
-  var createRevision = addFileRevision(paths.styles.destDir);
-
   gulp.src(paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(postCSS(processors))
     .pipe(cssnext())
     .pipe(cssnano())
     .pipe(rename(paths.styles.destFile))
-    .pipe(gulp.dest(paths.styles.destDir))
-    .pipe(createRevision());
+    .pipe(gulp.dest(paths.styles.destDir));
 });
 
 gulp.task('styles:browser-support', function(  ) {
@@ -84,7 +68,6 @@ gulp.task('styles:browser-support', function(  ) {
 
 // Script Builds
 gulp.task('scripts', ['clean:scripts'], function(  ) {
-  var createRevision = addFileRevision(paths.scripts.destDir);
   gulp.src(paths.scripts.src)
     .pipe(using())
     .pipe(jscs({
@@ -97,8 +80,7 @@ gulp.task('scripts', ['clean:scripts'], function(  ) {
     .pipe(babel())
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest(paths.scripts.destDir))
-    .pipe(createRevision());
+    .pipe(gulp.dest(paths.scripts.destDir));
 });
 
 gulp.task('scripts:fix', function( ) {

@@ -1,6 +1,6 @@
 {
-  "name": "petertait.com",
-  "description": "Personal website of designer Peter Tait.",
+  "name": "hugo-starter",
+  "description": "Hugo starter with postcss and gulp.",
   "main": "gulpfile.js",
   "authors": [
     "Peter Tait <contact@petertait.com>"
