@@ -8,7 +8,6 @@ $body-font-weight: $font-reg;
   box-sizing: border-box;
   font-family: $body-font;
   text-rendering: optimizeSpeed;
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }

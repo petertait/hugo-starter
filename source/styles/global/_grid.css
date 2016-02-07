@@ -3,7 +3,6 @@ $bpoint-small: 500px;
 $bpoint-max: $bpoint-large;
 
 $gutter: 20px;
-
 $columns: 4;
 
 .grid {
@@ -25,17 +24,17 @@ $columns: 4;
 }
 
 @media screen and (min-width: $bpoint-small) {
-  @for $i from 1 through $columns {
-    .col--#{$i} {
-      width: ((100 / $columns) * $i) * 1%;
+  @for $i from 1 to $columns {
+    .col--$i {
+      width: calc(((100 / $columns) * $i) * 1%);
     }
   }
 }
 
 @media screen and (max-width: $bpoint-small) {
-  @for $i from 1 through $columns {
-    .col__mob--#{$i} {
-      width: ((100 / $columns) * $i) * 1%;
+  @for $i from 1 t0 $columns {
+    .col__mob--$i {
+      width: calc(((100 / $columns) * $i) * 1%);
     }
   }
 }

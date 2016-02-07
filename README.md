@@ -1,6 +1,6 @@
 # Hugo Starter
 
-Hugo starter with postcss and gulp.
+Hugo starter with postcss (precss) and gulp.
 
 
 ***

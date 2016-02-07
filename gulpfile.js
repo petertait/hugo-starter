@@ -33,13 +33,7 @@ var lazypipe = require('lazypipe');
 
 // Styles Build
 var processors = [
-  require('postcss-import')({ glob: true }),
-  require('postcss-mixins')({
-    mixinsDir: process.cwd() + '/source/scripts/postcss/mixins/'
-  }),
-  require('postcss-nested'),
-  require('postcss-simple-vars'),
-  require('precss')({})
+  require('precss')
 ];
 
 gulp.task('styles', ['clean:styles'], function(  ) {
@@ -129,37 +123,12 @@ gulp.task('clean:scripts', function(  ) {
   ]);
 });
 
-// Dependency Management
-gulp.task('dependencies:app', function(  ) {
-  var styles = gulp.src([
-    'static/css/main.min.css',
-    'static/js/main.min.js'
-  ], { read: false });
-  gulp.src(paths.templates.src)
-    .pipe(inject(styles, { ignorePath: 'static' }))
-    .pipe(revreplace({
-      manifest: gulp.src('source/rev-manifest.json'),
-      replaceInExtensions: ['.html']
-    }))
-    .pipe(gulp.dest(paths.templates.destDir));
-});
-
-// Bower
-gulp.task('dependencies:bower', function(  ) {
-  var wiredep = require('wiredep').stream;
-  gulp.src(paths.templates.src)
-    .pipe(wiredep({ devDependencies: true, ignorePath: '../../public' }))
-    .pipe(gulp.dest(paths.templates.destDir));
-});
-
 // LiveReload
 gulp.task('watch', function(  ) {
   livereload.listen();
   gulp.watch(paths.styles.watch, ['styles']);
   gulp.watch(paths.scripts.src, ['scripts']);
-  gulp.watch('source/rev-manifest.json', ['dependencies:app']);
   gulp.watch(paths.images.watch, ['images']);
-  gulp.watch(['bower.json', '.bowerrc'], ['dependencies:bower']);
 });
 
 // The Default Task

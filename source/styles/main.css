@@ -1,6 +1,6 @@
 @import 'global/colors';
 @import 'global/typography';
-/*@import 'global/grid'; Working it out, chill */ 
+@import 'global/grid';
 @import 'global/base';
 
 @import 'partials/header';
