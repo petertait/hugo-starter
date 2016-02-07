@@ -32,7 +32,7 @@ $columns: 4;
 }
 
 @media screen and (max-width: $bpoint-small) {
-  @for $i from 1 t0 $columns {
+  @for $i from 1 to $columns {
     .col__mob--$i {
       width: calc(((100 / $columns) * $i) * 1%);
     }
