@@ -1,5 +1,5 @@
 $body-font: $font-sans;
-$body-font-size: $delta;
+$body-font-size: 100%;
 $body-font-weight: $font-reg;
 
 *,
@@ -28,5 +28,5 @@ body {
 }
 
 ::selection {
-  background: rgba(darken($blue-light, 10), 0.3);
+  background: color(blue shade(10%) a(0.2));
 }

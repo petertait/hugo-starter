@@ -11,7 +11,9 @@
     "url": "git@github.com:petertait/petertait.com.git"
   },
   "author": "Peter Tait <contact@petertait.com>",
-  "dependencies": {},
+  "dependencies": {
+    "postcss-color-function": "^2.0.0"
+  },
   "devDependencies": {
     "del": "^1.2.1",
     "doiuse": "^1.0.3",
@@ -39,7 +41,10 @@
     "lazypipe": "^1.0.1",
     "matchdep": "^0.3.0",
     "postcss": "^5.0.2",
+    "postcss-pxtorem": "^3.3.1",
+    "postcss-quantity-queries": "^0.4.0",
     "precss": "^1.4.0",
+    "pxtorem": "^1.0.0",
     "wiredep": "^3.0.0-beta"
   }
 }

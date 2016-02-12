@@ -17,10 +17,6 @@ var paths = {
     src: 'source/scripts/*.js',
     destDir: 'static/js/'
   },
-  templates: {
-    src: ['layouts/partials/scripts.html','layouts/partials/head.html'],
-    destDir: 'layouts/partials/'
-  },
   images: {
     src: 'source/images/**/*',
     destDir: 'static/images/',
@@ -33,7 +29,10 @@ var lazypipe = require('lazypipe');
 
 // Styles Build
 var processors = [
-  require('precss')
+  require('precss'),
+  require('postcss-quantity-queries'),
+  require('postcss-pxtorem'),
+  require("postcss-color-function")
 ];
 
 gulp.task('styles', ['clean:styles'], function(  ) {
